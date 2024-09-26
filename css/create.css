@@ -1,0 +1,112 @@
+:root {
+    --color-primary: #3C6E71;
+    --color-secondary: #284B63;
+    --color-tertiary: #006D77;
+    --color-keempat: #83C5BE;
+
+    --color-text-dark: #353535;
+    --color-text-light: #D9D9D9;
+    --color-text-white: white;
+    --color-text-light-dark: #c5c5c5;
+
+    --bg-color-main: white;
+    --bg-color-secondary: #D9D9D9;
+
+    --container-width-lg: 60%;
+    --container-width-sm: 96%;
+
+    --transition: all 400ms ease;
+}
+
+label, input, select {
+    font-family: "Poppins", sans-serif;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+}
+
+label {
+    margin-top: 1rem;
+}
+
+textarea {
+    font-family: "Lora", serif;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+}
+
+.container > div:not(.user__action) {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border: 1px solid var(--color-secondary);
+    border-radius: 6px;
+    padding: 0.4rem 0.8rem;
+}
+
+select {
+    border: 1px solid var(--color-secondary);
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+}
+
+textarea {
+    border: 1px solid var(--color-secondary);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+}
+
+.tags__container button {
+    font-weight: 500;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 0.2rem;
+    padding: 0.2rem 1rem;
+}
+
+.tags__container button:hover {
+    font-weight: 600;
+    background-color: var(--color-keempat);
+    color: var(--color-text-white);
+}
+
+.user__action {
+    margin: 2rem 0 2rem 0;
+    display: flex;
+    justify-content: end;
+    gap: 0.4rem;
+}
+
+#submit {
+    padding: 0.6rem 1.6rem;
+    border-radius: 6px;
+    background-color: var(--color-secondary);
+    border: none;
+    color: var(--color-text-white);
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#submit:hover {
+    background-color: var(--color-keempat);
+    transition: var(--transition);
+}
+
+#back-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    background-color: var(--color-text-light);
+    border: none;
+    color: var(--color-text-white);
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+#back-btn:hover {
+    background-color: var(--color-text-light-dark);
+}
