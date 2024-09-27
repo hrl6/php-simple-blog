@@ -94,6 +94,37 @@ header {
     font-weight: 700;
 }
 
+header form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header form span {
+    font-weight: 600;
+}
+
+#logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.6rem 1.2rem 0.6rem 0.8rem;
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    color: var(--color-secondary);
+    font-weight: 500;
+}
+
+#logout-btn:hover {
+    border: 1px solid var(--color-keempat);
+    color: var(--color-keempat);
+    font-weight: 600;
+}
+
+#logout-btn i {
+    font-size: 1.3rem;
+}
+
 /*---------------POSTS SECTION----------------*/
 .blogs__container {
     margin-top: 3rem;

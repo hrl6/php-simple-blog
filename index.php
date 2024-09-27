@@ -1,9 +1,13 @@
+<?php include 'database.php'?>
+
 <?php include 'header.php'?>
 
     <section class="container blogs__container">
         <div class="button__container">
             <h1>Posts</h1>
-            <a href="create-post.php"><button id="create-post"><i class='bx bx-plus'></i>Create Post</button></a>
+            <?php if(isset($username) && $role == "Admin"): ?>
+                <a href="create-post.php"><button id="create-post"><i class='bx bx-plus'></i>Create Post</button></a>
+            <?php endif; ?>
         </div>
         <div class="post__container">
             <p class="post__category">CATEGORY</p>
