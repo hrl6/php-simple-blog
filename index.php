@@ -1,5 +1,3 @@
-<?php include 'database.php'?>
-
 <?php include 'header.php'?>
 
     <section class="container blogs__container">
@@ -10,10 +8,57 @@
             <?php endif; ?>
         </div>
         <div class="post__container">
-            <p class="post__category">CATEGORY</p>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, tenetur.</h3>
-            <p class="post__content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore distinctio dolorem quo molestias asperiores possimus vel sed, sapiente quasi error debitis quia enim, modi commodi assumenda totam vero voluptate facilis ratione natus officiis impedit reprehenderit eligendi. Odio blanditiis deleniti incidunt facere eius rerum illum quod minus. <a href="post.php"><span id="read-more">Read more...</span></a></p>
-            <p class="post__date">25 September, 2024 </p>
+            <?php
+                $sql = "SELECT 
+                    p.id,
+                    p.date_created,
+                    p.date_updated,
+                    p.category_id,
+                    p.title,
+                    p.content,
+                    p.likes,
+                    p.user_id,
+                    c.name AS category_name
+                FROM posts p
+                JOIN categories c ON p.category_id = c.id";
+
+                $stmt = $conn->prepare($sql);
+
+                if ($stmt == false) {
+                    die("Error preparing statement: " . $conn->error);
+                }
+
+                $stmt->execute();
+                $stmt->bind_result($id, $date_created, $date_updated, $category_id, $title, $content, $likes, $user_id, $category_name);
+
+                while ($stmt->fetch()){
+                    if (isset($title) && isset($content)) {
+                        $title_words = explode(' ', $title);
+                        $text_words = explode(' ', $content);
+                
+                        if (count($title_words) > 13) {
+                            $title = htmlspecialchars(implode(' ', array_slice($title_words, 0, 13))) . '... ';
+                        } else {
+                            $title = htmlspecialchars($title);
+                        }
+
+                        if (count($text_words) > 48) {
+                            $text = htmlspecialchars(implode(' ', array_slice($text_words, 0, 48))) . '... ';
+                        } else {
+                            $text = htmlspecialchars($content);
+                        }
+                    } else {
+                        $text = '';
+                        $title_tx = '';
+                    }
+            ?>
+
+                <p class="post__category"><?php echo htmlspecialchars($category_name); ?></p>
+                <h3><?php echo $title; ?></h3>
+                <p class="post__content"><?php echo $text; ?><a href="post.php?id=<?php echo $id; ?>"><span id="read-more">View more</span></a></p>
+                <p class="post__date"><?php echo date("j F, Y", strtotime($date_created)); ?></p>
+
+            <?php }; ?>
         </div>
     </section>
 </body>
