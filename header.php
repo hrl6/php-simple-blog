@@ -42,7 +42,7 @@
                 </form>
             <?php else: ?>
                 <a href="login.php"><button id="login-btn">Login</button></a>
-                <a href="#"><button>Create an account</button></a>
+                <a href="signup.php"><button>Create an account</button></a>
             <?php endif; ?>
         </nav>
     </header>

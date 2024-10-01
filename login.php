@@ -30,7 +30,7 @@
     }
 ?>
 
-    <form class='container login__container' action="login.php" method="POST">
+    <form class='container auth__container' action="login.php" method="POST">
         <h1>Login</h1>
         <p>Asslmlkm! Enter your details to sign in to your account</p>
         <div>
@@ -41,7 +41,7 @@
             <label for="password">Password</label>
             <input type="password" id='password' name='password' placeholder='Password' required>
         </div>
-        <input id="submit" type="submit" value="Sign in">
+        <input id="submit" type="submit" value="Sign In">
     </form>
 </body>
 </html>

@@ -17,7 +17,7 @@
     --transition: all 400ms ease;
 }
 
-.login__container {
+.auth__container {
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -31,12 +31,17 @@
     margin-bottom: 4rem;
 }
 
-.login__container p {
+.auth__container h1 {
+    line-height: 2.2rem;
+    text-align: center;
+}
+
+.auth__container p {
     line-height: 1.2rem;
     text-align: center;
 }
 
-.login__container > div {
+.auth__container > div {
     display: flex;
     flex-direction: column;
     width: 100%;
