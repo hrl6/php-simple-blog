@@ -20,7 +20,8 @@
                     p.user_id,
                     c.name AS category_name
                 FROM posts p
-                JOIN categories c ON p.category_id = c.id";
+                JOIN categories c ON p.category_id = c.id
+                ORDER BY date_updated DESC";
 
                 $stmt = $conn->prepare($sql);
 
@@ -56,8 +57,11 @@
                 <p class="post__category"><?php echo htmlspecialchars($category_name); ?></p>
                 <h3><?php echo $title; ?></h3>
                 <p class="post__content"><?php echo $text; ?><a href="post.php?id=<?php echo $id; ?>"><span id="read-more">View more</span></a></p>
-                <p class="post__date"><?php echo date("j F, Y", strtotime($date_created)); ?></p>
-
+                <?php if ($date_created != $date_updated): ?>
+                    <p class="post__date"><?php echo date("j F, Y", strtotime($date_updated)) . " (<em>edited</em>)"; ?></p>
+                <?php else: ?>
+                    <p class="post__date"><?php echo date("j F, Y", strtotime($date_created)); ?></p>
+                <?php endif; ?>
             <?php }; ?>
         </div>
     </section>

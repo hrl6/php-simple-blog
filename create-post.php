@@ -24,6 +24,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deen</title>
 
+    <script src="select.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/create.css">
 
@@ -45,16 +48,26 @@
             <?php endif; ?>
         </nav>
     </header>
-    <form action="" class="container">
+    <form action="create-post.php" class="container">
         <h2>Create Post</h2>
-
+        
+        <?php
+            $categories_sql = "SELECT id, name FROM categories";
+            $categories_result = $conn->query($categories_sql);
+        ?>
         <div>
             <label for="category">Category</label>
             <select name="category" id="category">
                 <option value="" disabled selected>Select a catogory</option>
-                <option value="Tafsir">Tafsir</option>
-                <option value="Sirah">Sirah</option>
-                <option value="Halal/Haram">Halal/Haram</option>
+                <?php
+                    if ($categories_result->num_rows > 0) {
+                        while ($row = $categories_result->fetch_assoc()) {
+                            echo "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+                        }
+                    } else {
+                        echo "<option value='' disabled>No categories available</option>";
+                    }
+                ?>
             </select>
         </div>
 
@@ -64,11 +77,19 @@
         </div>
 
         <div>
-            <label>Tags (optional):</label>
+            <p class="tags__option">Tags (optional):</p>
+            <input type="hidden" name="selected_tags" id="selected-tags" value="">
             <div class="tags__container">
-                <button type="button" class="tag__btn" data-tag="Tafsir">Tafsir</button>
-                <button type="button" class="tag__btn" data-tag="Sirah">Sirah</button>
-                <button type="button" class="tag__btn" data-tag="Halal/Haram">Halal/Haram</button>
+                <?php
+                    $tags_sql = "SELECT id, name FROM tags";
+                    $tags_result = $conn->query($tags_sql);
+
+                    if ($tags_result->num_rows > 0) {
+                        while ($tag = $tags_result->fetch_assoc()) {
+                            echo "<button type='button' class='tag__btn' data-tag-id='" . $tag['id'] . "'>" . $tag['name'] . "</button>";
+                        }
+                    }
+                ?>
             </div>
         </div>
 
@@ -79,8 +100,40 @@
 
         <div>
             <label for="content">Content:</label>
-            <textarea id="content" name="content" placeholder="Write your blog content here..." required></textarea>
+            <textarea id="content" name="content" required></textarea>
         </div>
+        
+        <!--<div id="editor"></div>
+        <script>
+            const toolbarOptions = [
+                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                ['blockquote', 'code-block'],
+                ['link', 'image', 'video', 'formula'],
+
+                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
+                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                [{ 'direction': 'rtl' }],                         // text direction
+
+                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                [{ 'font': [] }],
+                [{ 'align': [] }],
+
+                ['clean']                                         // remove formatting button
+            ];
+
+            const quill = new Quill('#editor', {
+            modules: {
+                toolbar: toolbarOptions
+            },
+            placeholder: "Write your blog content here...",
+            theme: 'snow'
+            });
+        </script>-->
 
         <div class="user__action">
             <a href="index.html"><button id="back-btn" onclick="window.history.back()">Cancel</button></a>
