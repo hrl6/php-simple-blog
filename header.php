@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/post.css">
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/manage.css">
 
     <!-- BOXICONS https://boxicons.com/ -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -37,8 +38,9 @@
         <nav>
             <?php if (isset($_SESSION['username'])): ?>
                 <form method="POST">
-                    <P>Welcome, <span><?php echo $username?></span></P>    
-                    <a href="index.php"><button type="submit" name="logout" id="logout-btn"><i class='bx bxs-log-out'></i>Logout</button></a>
+                    <P>Welcome, <span><?php echo $username?></span></P>
+                    <a href="manage.php">Manage</a>
+                    <button type="submit" name="logout" id="logout-btn"><i class='bx bxs-log-out'></i>Logout</button>
                 </form>
             <?php else: ?>
                 <a href="login.php"><button id="login-btn">Login</button></a>
