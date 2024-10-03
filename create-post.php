@@ -48,7 +48,47 @@
             <?php endif; ?>
         </nav>
     </header>
-    <form action="create-post.php" class="container">
+
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $create_category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_SPECIAL_CHARS);
+            $create_penceramah = filter_input(INPUT_POST, 'penceramah', FILTER_SANITIZE_SPECIAL_CHARS);
+            $create_title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+            $create_content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
+        
+            $select_tags = filter_input(INPUT_POST, 'selected_tags', FILTER_SANITIZE_SPECIAL_CHARS);
+            $create_tags = !empty($select_tags) ? explode(", ", $select_tags) : [];
+
+            $stmt = $conn->prepare("INSERT INTO posts (category_id, penceramah, title, content, user_id) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param('isssi', $create_category, $create_penceramah, $create_title, $create_content, $user_id);
+
+            if ($stmt->execute()) {
+                $post_id = $stmt->insert_id;
+
+                if (!empty($create_tags)) {
+                    $tags_stmt = $conn->prepare("INSERT INTO posts_tags (post_id, tag_id) VALUES (?, ?)");
+                    foreach ($create_tags as $tag_id) {
+                        $tags_stmt->bind_param('ii', $post_id, $tag_id);
+                        $tags_stmt->execute();
+                    }
+                    $tags_stmt->close();
+                } else {
+                    echo "<script>alert('EMPTY TAGS!! Expected Tags: " . $select_tags . "');</script>";
+                }
+
+                echo "<script>
+                        alert('Post successfully created!');
+                        window.location.href = 'index.php';
+                      </script>";
+            } else {
+                echo "<script>alert('Error: " . $stmt->error() . "');</script>";
+            }
+
+            $stmt->close();
+        }
+    ?>
+
+    <form class="container" action="create-post.php" method="POST">
         <h2>Create Post</h2>
         
         <?php
@@ -81,7 +121,7 @@
             <input type="hidden" name="selected_tags" id="selected-tags" value="">
             <div class="tags__container">
                 <?php
-                    $tags_sql = "SELECT id, name FROM tags";
+                    $tags_sql = "SELECT id, name FROM tags ORDER BY id ASC";
                     $tags_result = $conn->query($tags_sql);
 
                     if ($tags_result->num_rows > 0) {

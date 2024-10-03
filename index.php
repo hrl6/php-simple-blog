@@ -38,15 +38,15 @@
                         $text_words = explode(' ', $content);
                 
                         if (count($title_words) > 13) {
-                            $title = htmlspecialchars(implode(' ', array_slice($title_words, 0, 13))) . '... ';
+                            $title = html_entity_decode(implode(' ', array_slice($title_words, 0, 13))) . '... ';
                         } else {
-                            $title = htmlspecialchars($title);
+                            $title = html_entity_decode($title);
                         }
 
                         if (count($text_words) > 48) {
-                            $text = htmlspecialchars(implode(' ', array_slice($text_words, 0, 48))) . '... ';
+                            $text = html_entity_decode(implode(' ', array_slice($text_words, 0, 48))) . '... ';
                         } else {
-                            $text = htmlspecialchars($content);
+                            $text = html_entity_decode($content);
                         }
                     } else {
                         $text = '';

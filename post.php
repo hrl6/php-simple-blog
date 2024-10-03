@@ -37,7 +37,7 @@
         ?>
         <p class="post__category"><?php echo htmlspecialchars($category_name); ?></p>
         <div class="post__container">
-            <h2><?php echo htmlspecialchars($title); ?></h2>
+            <h2><?php echo html_entity_decode($title); ?></h2>
             <?php if ($date_created != $date_updated): ?>
                     <p class="post__date"><?php echo date("j F, Y", strtotime($date_updated)) . " (<em>edited</em>)"; ?></p>
                 <?php else: ?>
@@ -69,7 +69,7 @@
             ?>
             <p><?php echo "Penulis: " . htmlspecialchars($username); $check_sql->close();?></p>
             <p><?php echo "Penceramah: " . htmlspecialchars($penceramah) . "<br><br>"; ?></p>
-            <p class="post__content"><?php echo htmlspecialchars($content); ?></p>
+            <p class="post__content"><?php echo html_entity_decode($content); ?></p>
             <div class="users__action">
                 <button id="likes"><i class='bx bx-like'></i></button>
                 <button id="bookmarks"><i class='bx bx-bookmark-plus'></i></button>
