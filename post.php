@@ -35,6 +35,7 @@
 
                 while ($stmt->fetch()){
         ?>
+        <p>Post ID: <?php echo $id; ?></p>
         <p class="post__category"><?php echo htmlspecialchars($category_name); ?></p>
         <div class="post__container">
             <h2><?php echo html_entity_decode($title); ?></h2>

@@ -65,7 +65,9 @@
                     <td><?php echo htmlspecialchars($row['tag_names']); ?></td>
                         <td>
                             <button><i class='bx bxs-edit-alt'></i></button>
-                            <button><i class='bx bxs-trash'></i></button></td>
+                            <a href="delete-post.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">
+                                <button><i class='bx bxs-trash'></i></button>
+                            </a>
                 </tr>
                 <?php 
                     }} else {
