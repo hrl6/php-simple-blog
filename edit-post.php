@@ -50,6 +50,8 @@
     }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $post_id = isset($_POST['post_id']) ? (int)$_POST['post_id'] : null;
+
         $create_category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_SPECIAL_CHARS);
         $create_penceramah = filter_input(INPUT_POST, 'penceramah', FILTER_SANITIZE_SPECIAL_CHARS);
         $create_title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -75,7 +77,7 @@
                 }
                 $tags_stmt->close();
             } else {
-                echo "<script>alert('EMPTY TAGS!! Expected Tags: " . $select_tags . "');</script>";
+                echo "<script>alert('No tag chosen. Please reselect if needed :D');</script>";
             }
 
             echo "<script>
@@ -127,7 +129,9 @@
     <form class="container" action="edit-post.php" method="POST">
         <h2>Editing...</h2>
         
-        <p><?php echo $id; ?></p>
+        <input type="hidden" name="post_id" value="<?php echo $id; ?>">
+
+        <p>Post ID: <?php echo $id; ?></p>
         <div>
             <label for="category">Category</label>
             <select name="category" id="category">
@@ -176,7 +180,7 @@
         </div>
 
         <div class="user__action">
-            <a href="index.html"><button id="back-btn" onclick="window.history.back()">Cancel</button></a>
+            <button id="back-btn" type="button" onclick="window.history.back()">Cancel</button>
             <input id="submit" type="submit" value="Update Post">
         </div>
     </form>

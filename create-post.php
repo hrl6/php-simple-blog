@@ -177,7 +177,7 @@
         </script>-->
 
         <div class="user__action">
-            <a href="index.html"><button id="back-btn" onclick="window.history.back()">Cancel</button></a>
+            <button id="back-btn" type="button" onclick="window.history.back()">Cancel</button>
             <input id="submit" type="submit" value="Confirm">
         </div>
     </form>
