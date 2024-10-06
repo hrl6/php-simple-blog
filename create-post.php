@@ -1,8 +1,9 @@
 <?php
-    # include db manually in create-post.php bcus diff header setup
+    # include db manually in these pages bcus diff header setup: create-post.php, edit-post.php
     include 'database.php';
-
     session_start();
+
+    include 'logged-in.php';
 
     $user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
     $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : null;

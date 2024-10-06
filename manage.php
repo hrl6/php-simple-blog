@@ -1,4 +1,7 @@
-<?php include 'header.php'; ?>
+<?php
+    include 'header.php'; 
+    include 'logged-in.php';
+?>
 
 <?php
     if (isset($user_id)) {
@@ -64,7 +67,10 @@
                     <td><?php echo htmlspecialchars($row['category_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['tag_names']); ?></td>
                         <td>
-                            <button><i class='bx bxs-edit-alt'></i></button>
+                            <!--<button><i class='bx bxs-edit-alt'></i></button>-->
+                            <a href="edit-post.php?id=<?php echo $row['id']; ?>">
+                                <button><i class='bx bxs-edit-alt'></i></button>
+                            </a>
                             <a href="delete-post.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">
                                 <button><i class='bx bxs-trash'></i></button>
                             </a>
