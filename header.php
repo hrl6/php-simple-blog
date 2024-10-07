@@ -39,7 +39,7 @@
             <?php if (isset($_SESSION['username'])): ?>
                 <form method="POST">
                     <P>Welcome, <span><?php echo $username?></span></P>
-                    <a href="manage.php">Manage</a>
+                    <a class="manage__btn" href="manage.php">Manage</a>
                     <button type="submit" name="logout" id="logout-btn"><i class='bx bxs-log-out'></i>Logout</button>
                 </form>
             <?php else: ?>

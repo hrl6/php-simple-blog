@@ -34,7 +34,6 @@
 ?>
 
     <section class='container'>
-        <?php echo "User ID: #" . $user_id?>
         <h2>Manage Posts</h2>
         <p>Total posts: <span><?php echo $result->num_rows; ?></span></p>
         <table>
@@ -58,22 +57,23 @@
                         while ($row = $result->fetch_assoc()) {
                 ?>
                 <tr>
-                    <td><?php echo date("j M Y", strtotime($row['date_created'])); ?></td>
-                    <td><?php echo date("j M Y", strtotime($row['date_updated'])); ?></td>
+                    <td class="date"><?php echo date("j M Y", strtotime($row['date_created'])); ?></td>
+                    <td class="date"><?php echo date("j M Y", strtotime($row['date_updated'])); ?></td>
                     <td><?php echo htmlspecialchars($row['penceramah']); ?></td>
-                    <td><?php echo html_entity_decode($row['title']); ?></td>
+                    <td class="title"><?php echo html_entity_decode($row['title']); ?></td>
                     <td><a href="post.php?id=<?php echo $row['id']?>">View content...</a></td>
                     <td><?php echo htmlspecialchars($row['likes']); ?></td>
                     <td><?php echo htmlspecialchars($row['category_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['tag_names']); ?></td>
-                        <td>
+                        <td class="action__icon">
                             <!--<button><i class='bx bxs-edit-alt'></i></button>-->
                             <a href="edit-post.php?id=<?php echo $row['id']; ?>">
-                                <button><i class='bx bxs-edit-alt'></i></button>
+                                <i class='bx bxs-edit-alt'></i>
                             </a>
                             <a href="delete-post.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this post?');">
-                                <button><i class='bx bxs-trash'></i></button>
+                                <i class='bx bxs-trash'></i>
                             </a>
+                        </td>
                 </tr>
                 <?php 
                     }} else {

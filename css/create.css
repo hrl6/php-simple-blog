@@ -74,7 +74,7 @@ select {
 }
 
 .user__action {
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0 4rem 0;
     display: flex;
     justify-content: end;
     gap: 0.4rem;
@@ -110,5 +110,5 @@ select {
 }
 
 #back-btn:hover {
-    background-color: var(--color-text-light-dark);
+    background-color: var(--color-text-dark);
 }

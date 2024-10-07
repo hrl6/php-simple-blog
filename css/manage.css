@@ -20,10 +20,18 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 6rem;
 }
+
+td {
+    font-family: "Lora", system-ui;
+    font-size: 0.9rem;
+}
+
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 0.4rem;
+    line-height: 1.1rem;
 }
 th {
     background-color: #f2f2f2;
@@ -34,4 +42,25 @@ tr:nth-child(even) {
 }
 tr:hover {
     background-color: #ddd;
+}
+
+.title {
+    font-weight: 600;
+    font-style: italic;
+}
+
+.action__icon, .date {
+    text-align: center;
+}
+
+.action__icon a {
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.action__icon a:hover {
+    color: var(--color-keempat);
+    font-size: 1.3rem;
 }
