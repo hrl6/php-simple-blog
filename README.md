@@ -10,17 +10,21 @@ The goal of Deen Blog was to create a flexible and lightweight platform for cont
 ## Features
 - **Responsive design** for mobile and desktop users.
 - **Admin dashboard** to create, edit, and delete blog posts.
-- **Search functionality** to allow users to quickly find posts.
 - **Database management** using MySQL for post storage and retrieval.
 - **Form validation** for secure user login.
 
 ## Screenshots
 
 ### Homepage & View Content
-![Homepage screenshot](./img/deen-logo.png)
+![Homepage screenshot](./img/index-no-login.png)
+![View Post screenshot](./img/post.png)
 
 ### Login & Create Account
-![Homepage screenshot](./img/deen-logo.png)
+![Login screenshot](./img/login.png)
+![Signup screenshot](./img/signup.png)
 
 ### Create & Manage Posts
-![Homepage screenshot](./img/deen-logo.png)
+![Logged In Page screenshot](./img/index.png)
+![Create Post screenshot](./img/create.png)
+![Edit Post screenshot](./img/edit.png)
+![Delete Post screenshot](./img/delete.png)
