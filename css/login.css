@@ -7,7 +7,7 @@
     /*border: 3px solid var(--color-secondary);*/
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    padding: 2rem 4rem 4rem 4rem;
+    padding: 2.6rem 4rem 4rem 4rem;
     margin-top: 4rem;
     margin-bottom: 4rem;
 }
@@ -58,4 +58,14 @@ input {
 #submit:hover {
     background-color: var(--color-keempat);
     transition: var(--transition);
+}
+
+
+@media screen and (max-width: 550px) {
+    .auth__container {
+        width: auto;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 2.6rem 2.6rem 4rem 2.6rem;
+    }
 }

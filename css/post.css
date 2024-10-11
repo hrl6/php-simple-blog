@@ -15,12 +15,19 @@
     font-family: "Poppins", sans-serif;
     font-size: 0.8rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.4rem;
     
     border-radius: 6px;
     padding: 0.2rem 1rem 0.2rem 1rem;
     background-color: var(--color-secondary);
     color: var(--color-text-white);
+}
+
+.post__content {
+    font-family: "Lora", sans-serif;
+    white-space: pre-wrap;
+    text-align: justify;
+    hyphens: auto;
 }
 
 .post__date {

@@ -68,8 +68,8 @@
                 $check_sql->bind_result($username);
                 $check_sql->fetch();
             ?>
-            <p><?php echo "Penulis: " . htmlspecialchars($username); $check_sql->close();?></p>
-            <p><?php echo "Penceramah: " . htmlspecialchars($penceramah) . "<br><br>"; ?></p>
+            <p><?php echo "⸻ by " . "<i>" . htmlspecialchars($username) . "</i>" . "<br><br>"; $check_sql->close();?></p>
+            <p><?php echo "Penceramah: " . "<b>" . htmlspecialchars($penceramah) . "</b>" . "<br><br>"; ?></p>
             <p class="post__content"><?php echo html_entity_decode($content); ?></p>
             <div class="users__action">
                 <button id="likes"><i class='bx bx-like'></i></button>
